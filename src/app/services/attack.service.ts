@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { BehaviorSubject } from "rxjs";
 import { Attack } from "../types/attack.types";
 
 @Injectable()
