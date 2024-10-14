@@ -24,30 +24,10 @@ export interface PokemonDetails {
     weight: number
 }
 
-interface Abilitiy {
-    ability: {
-        name: string
-    },
-    is_hidden: boolean
-}
-
-interface Item {
-    item: {
-        name: string
-    }
-}
-
 export interface Move {
     move: {
         name: string,
         url: string
-    }
-}
-
-interface Stat {
-    base_stat: number,
-    stat: {
-        name: string
     }
 }
 
@@ -68,4 +48,24 @@ export interface Evolution {
     },
     is_baby: boolean
 
+}
+
+interface Abilitiy {
+    ability: {
+        name: string
+    },
+    is_hidden: boolean
+}
+
+interface Item {
+    item: {
+        name: string
+    }
+}
+
+interface Stat {
+    base_stat: number,
+    stat: {
+        name: string
+    }
 }
