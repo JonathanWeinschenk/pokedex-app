@@ -1,0 +1,93 @@
+@if (this._selectedPokemon(); as pokemon) {
+<div class="pokemon-name">#{{ pokemon.id }} {{ (pokemon.name | capitalize) }}</div>
+<div class="data-container">
+    <div class="basic-information-container">
+        <div class="pokemon-profile-container">
+            <div class="image-container">
+                <img [src]="this.spriteSrc()" [alt]="pokemon.name" />
+            </div>
+            <div class="icon-stat-container">
+                <div class="icon-value-container">
+                    <mat-icon fontIcon="height" matTooltip="Höhe" matTooltipPosition="left" />
+                    {{ (pokemon.height | decimalPoint) }} m
+                </div>
+                <div class="icon-value-container">
+                    <mat-icon fontIcon="scale" matTooltip="Gewicht" matTooltipPosition="left" />
+                    {{ (pokemon.weight | decimalPoint) }} kg
+                </div>
+                <div class="icon-value-container">
+                    <mat-icon fontIcon="stars" matTooltip="Basiserfahrung" matTooltipPosition="left" />
+                    {{ pokemon.base_experience }} xp
+                </div>
+            </div>
+        </div>
+        <div class="picture-controls">
+            @if(pokemon.sprites.front_female){
+            <mat-button-toggle-group [formControl]="this.spriteStyleControl" aria-label="Sprite Style"
+                class="horizontally-centered" hideSingleSelectionIndicator>
+                <mat-button-toggle value="default">
+                    <mat-icon fontIcon="male" />
+                </mat-button-toggle>
+                <mat-button-toggle value="female">
+                    <mat-icon fontIcon="female" />
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+            }
+            @if(pokemon.sprites.front_shiny){
+            <mat-checkbox (change)="this.isShiny.set($event.checked)"
+                [class.horizontally-centered]="!pokemon.sprites.front_female">
+                Shiny
+            </mat-checkbox>
+            }
+        </div>
+        <div class="audio-container">
+            <audio controls [src]="pokemon.cries.latest" type="audio/ogg"></audio>
+        </div>
+        <div class="category">Evolutionen</div>
+        @if(this.evolution()?.chain){
+        <app-evolution [evolution]="this.evolution()!.chain" [selectedPokemonName]="pokemon.name" />
+        }
+    </div>
+    <mat-tab-group animationDuration="0ms">
+        <mat-tab label="Grunddaten">
+            <div class="category">Basiswerte</div>
+            <div class="stats-container">
+                @for (stat of pokemon.stats; track $index) {
+                <div class="stat" [class.with-border]="!$last">
+                    <span>{{ stat.stat.name }}</span>
+                    <span>{{ stat.base_stat }}</span>
+                </div>
+                }
+            </div>
+            <div class="category">Fähigkeiten</div>
+            @for (ability of pokemon.abilities; track $index) {
+            <div class="icon-value-container list-padding">
+                <mat-icon [fontIcon]="ability.is_hidden ? 'visibility_off' : 'visibility'"
+                    [matTooltip]="ability.is_hidden ? 'Versteckte Fähigkeit' : 'Normale Fähigkeit'"
+                    matTooltipPosition="left" />
+                {{ ability.ability.name }}
+            </div>
+            }
+            <div class="category">Items</div>
+            @if (pokemon.held_items.length > 0) {
+            <div class="item-container list-padding">
+                @for (item of pokemon.held_items; track $index) {
+                <span>&bullet; {{ item.item.name }}</span>
+                }
+            </div>
+            } @else {
+            <div class="list-padding">Das Pokémon besitzt keine Items</div>
+            }
+        </mat-tab>
+        <mat-tab label="Attacken">
+            <div class="attack-tab">
+                @for (move of pokemon.moves; track $index) {
+                <span class="attack-move" (click)="this.openAttackDetailsDialog(move)">{{ move.move.name }}</span>
+                }
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+} @else {
+<div class="info">Wähle ein Pokémon!<br />Wie wäre es mit Venusaur?</div>
+}

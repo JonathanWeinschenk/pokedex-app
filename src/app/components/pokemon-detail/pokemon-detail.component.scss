@@ -1,0 +1,127 @@
+@import '../../../styles/_variables';
+
+@mixin base-flex-container {
+    display: flex;
+    flex-direction: column;
+}
+
+:host {
+    width: 650px;
+    height: 100%;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.pokemon-name {
+    display: flex;
+    align-items: center;
+    background-color: $blue-primary;
+    color: white;
+    padding: 5px 10px;
+}
+
+.data-container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: 20px;
+    overflow: auto;
+}
+
+.basic-information-container {
+    @include base-flex-container();
+    width: 320px;
+}
+
+.pokemon-profile-container {
+    display: flex;
+    justify-content: end;
+}
+
+.image-container {
+    margin: 0 auto;
+}
+
+.icon-stat-container {
+    @include base-flex-container();
+    width: 110px;
+    justify-content: center;
+    gap: 5px;
+}
+
+.icon-value-container {
+    display: flex;
+    gap: 10px;
+}
+
+.picture-controls {
+    height: 42px;
+    display: grid;
+    grid-template-columns: auto 120px;
+    flex-direction: row;
+
+    .horizontally-centered {
+        margin: 0 auto;
+    }
+}
+
+.category {
+    border-bottom: 2px solid $blue-primary;
+    color: $blue-dark;
+    padding: 2px 5px;
+    height: 30px;
+    box-sizing: border-box;
+    margin: 10px 0 0 0;
+}
+
+.list-padding {
+    padding: 0 0 0 10px;
+}
+
+mat-tab-group {
+    width: 350px;
+}
+
+.stats-container {
+    @include base-flex-container();
+    width: 200px;
+    margin: 5px 0 0 10px;
+
+    .stat {
+        display: grid;
+        grid-template-columns: 1fr 40px;
+
+        &.with-border {
+            border-bottom: 1px solid $blue-primary;
+        }
+    }
+}
+
+.item-container {
+    @include base-flex-container();
+}
+
+.attack-tab {
+    @include base-flex-container();
+
+    .attack-move {
+        cursor: pointer;
+
+        &:hover {
+            background-color: $blue-primary;
+            color: white;
+        }
+
+        ;
+    }
+}
+
+.info {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
