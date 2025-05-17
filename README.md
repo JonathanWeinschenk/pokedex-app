@@ -1,27 +1,25 @@
-# PokedexApp
+# PokedexApp (Angular 18 + PokeAPI)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
+Dieses Frontend-Projekt entstand im Rahmen einer Bewerbungsaufgabe und wurde mit Angular umgesetzt. Ziel war die Entwicklung einer kleinen, performanten Single-Page-App zur Darstellung von Pokémon-Daten aus der [PokeAPI](https://pokeapi.co/).
 
-## Development server
+## ✨ Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Startseite** mit Navigation zum Pokedex
+- **Unendliches Scrollen** durch die Pokémon-Liste (Infinite Scroll)
+- **Detailansicht** bei Klick auf ein Pokémon
+- **Attackenliste** mit weiterführenden Informationen bei Klick
+- Dynamisches Nachladen von Daten
 
-## Code scaffolding
+## ⚙️ Tech-Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 18
+- RxJS
+- Angular Router
+- HTTP-Client
+- SCSS
 
-## Build
+## 📦 Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm install
+ng serve
